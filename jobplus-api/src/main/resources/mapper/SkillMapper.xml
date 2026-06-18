@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.SkillMapper">
+
+    <resultMap id="skillResultMap" type="Skill">
+        <id     property="id"   column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="skillResultMap">
+        SELECT * FROM skill ORDER BY name
+    </select>
+
+    <select id="findById" resultMap="skillResultMap">
+        SELECT * FROM skill WHERE id = #{id}
+    </select>
+
+    <select id="findByName" resultMap="skillResultMap">
+        SELECT * FROM skill WHERE name = #{name}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO skill (name) VALUES (#{name})
+    </insert>
+
+    <select id="findByUserId" resultMap="skillResultMap">
+        SELECT s.* FROM skill s
+        INNER JOIN user_skill us ON s.id = us.skill_id
+        WHERE us.user_id = #{userId}
+        ORDER BY s.name
+    </select>
+
+    <select id="findByJobId" resultMap="skillResultMap">
+        SELECT s.* FROM skill s
+        INNER JOIN job_skill js ON s.id = js.skill_id
+        WHERE js.job_id = #{jobId}
+        ORDER BY s.name
+    </select>
+
+    <insert id="addUserSkill">
+        INSERT IGNORE INTO user_skill (user_id, skill_id) VALUES (#{userId}, #{skillId})
+    </insert>
+
+    <delete id="removeUserSkill">
+        DELETE FROM user_skill WHERE user_id = #{userId} AND skill_id = #{skillId}
+    </delete>
+
+</mapper>

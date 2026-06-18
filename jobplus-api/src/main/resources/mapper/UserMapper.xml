@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jobplus.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="User">
+        <id     property="id"           column="id"/>
+        <result property="email"        column="email"/>
+        <result property="passwordHash" column="password_hash"/>
+        <result property="role"         column="role"/>
+        <result property="name"         column="name"/>
+        <result property="headline"     column="headline"/>
+        <result property="avatarUrl"    column="avatar_url"/>
+        <result property="location"     column="location"/>
+        <result property="status"       column="status"/>
+        <result property="createdAt"    column="created_at"/>
+        <result property="updatedAt"    column="updated_at"/>
+    </resultMap>
+
+    <select id="findById" resultMap="userResultMap">
+        SELECT id, email, password_hash, role, name, headline, avatar_url, location, status, created_at, updated_at
+        FROM `user`
+        WHERE id = #{id}
+    </select>
+
+    <select id="findByEmail" resultMap="userResultMap">
+        SELECT id, email, password_hash, role, name, headline, avatar_url, location, status, created_at, updated_at
+        FROM `user`
+        WHERE email = #{email}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user` (email, password_hash, role, name, headline, avatar_url, location, status)
+        VALUES (#{email}, #{passwordHash}, #{role}, #{name}, #{headline}, #{avatarUrl}, #{location},
+                COALESCE(#{status}, 'ACTIVE'))
+    </insert>
+
+    <update id="updateById">
+        UPDATE `user`
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="headline != null">headline = #{headline},</if>
+            <if test="avatarUrl != null">avatar_url = #{avatarUrl},</if>
+            <if test="location != null">location = #{location},</if>
+            updated_at = CURRENT_TIMESTAMP
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE `user`
+        SET status = #{status}, updated_at = CURRENT_TIMESTAMP
+        WHERE id = #{id}
+    </update>
+
+    <select id="existsByEmail" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM `user`
+        WHERE email = #{email}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE `user`
+        SET password_hash = #{passwordHash}, updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateAvatarUrl">
+        UPDATE `user`
+        SET avatar_url = #{avatarUrl}, updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateEmail">
+        UPDATE `user`
+        SET email = #{email}, updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

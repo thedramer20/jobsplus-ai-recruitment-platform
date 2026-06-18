@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.JobMapper">
+
+    <resultMap id="jobResultMap" type="Job">
+        <id     property="id"              column="id"/>
+        <result property="companyId"       column="company_id"/>
+        <result property="postedBy"        column="posted_by"/>
+        <result property="title"           column="title"/>
+        <result property="description"     column="description"/>
+        <result property="location"        column="location"/>
+        <result property="employmentType"  column="employment_type"/>
+        <result property="experienceLevel" column="experience_level"/>
+        <result property="salaryMin"       column="salary_min"/>
+        <result property="salaryMax"       column="salary_max"/>
+        <result property="status"          column="status"/>
+        <result property="postedAt"        column="posted_at"/>
+        <result property="deadline"        column="deadline"/>
+        <result property="updatedAt"       column="updated_at"/>
+    </resultMap>
+
+    <select id="findById" resultMap="jobResultMap">
+        SELECT * FROM job WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO job (company_id, posted_by, title, description, location,
+                         employment_type, experience_level, salary_min, salary_max,
+                         status, deadline)
+        VALUES (#{companyId}, #{postedBy}, #{title}, #{description}, #{location},
+                #{employmentType}, #{experienceLevel}, #{salaryMin}, #{salaryMax},
+                COALESCE(#{status}, 'OPEN'), #{deadline})
+    </insert>
+
+    <update id="updateById">
+        UPDATE job
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="employmentType != null">employment_type = #{employmentType},</if>
+            <if test="experienceLevel != null">experience_level = #{experienceLevel},</if>
+            <if test="salaryMin != null">salary_min = #{salaryMin},</if>
+            <if test="salaryMax != null">salary_max = #{salaryMax},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="deadline != null">deadline = #{deadline},</if>
+            updated_at = CURRENT_TIMESTAMP
+        </set>
+        WHERE id = #{id} AND posted_by = #{postedBy}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE job SET status = #{status}, updated_at = CURRENT_TIMESTAMP
+        WHERE id = #{id} AND posted_by = #{postedBy}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM job WHERE id = #{id} AND posted_by = #{postedBy}
+    </delete>
+
+    <select id="findWithFilters" resultMap="jobResultMap">
+        SELECT DISTINCT j.* FROM job j
+        <if test="skillIds != null and skillIds.size() > 0">
+            INNER JOIN job_skill js ON j.id = js.job_id AND js.skill_id IN
+            <foreach item="sid" collection="skillIds" open="(" separator="," close=")">#{sid}</foreach>
+        </if>
+        <where>
+            j.status = 'OPEN'
+            <if test="keyword != null and keyword != ''">
+                AND (j.title LIKE CONCAT('%', #{keyword}, '%')
+                  OR j.description LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="location != null and location != ''">
+                AND j.location LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="employmentType != null and employmentType != ''">
+                AND j.employment_type = #{employmentType}
+            </if>
+            <if test="experienceLevel != null and experienceLevel != ''">
+                AND j.experience_level = #{experienceLevel}
+            </if>
+            <if test="salaryMin != null">
+                AND j.salary_min &gt;= #{salaryMin}
+            </if>
+            <if test="salaryMax != null">
+                AND j.salary_max &lt;= #{salaryMax}
+            </if>
+            <if test="remote != null and remote == true">
+                AND j.employment_type = 'REMOTE'
+            </if>
+            <if test="companyId != null">
+                AND j.company_id = #{companyId}
+            </if>
+            <if test="postedWithinDays != null">
+                AND j.posted_at &gt;= DATE_SUB(NOW(), INTERVAL #{postedWithinDays} DAY)
+            </if>
+        </where>
+        ORDER BY j.posted_at DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="findOpenForSmartMatch" resultMap="jobResultMap">
+        SELECT DISTINCT j.* FROM job j
+        <if test="skillIds != null and skillIds.size() > 0">
+            INNER JOIN job_skill js ON j.id = js.job_id AND js.skill_id IN
+            <foreach item="sid" collection="skillIds" open="(" separator="," close=")">#{sid}</foreach>
+        </if>
+        <where>
+            j.status = 'OPEN'
+            <if test="keyword != null and keyword != ''">
+                AND (j.title LIKE CONCAT('%', #{keyword}, '%')
+                  OR j.description LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="location != null and location != ''">
+                AND j.location LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="employmentType != null and employmentType != ''">
+                AND j.employment_type = #{employmentType}
+            </if>
+            <if test="experienceLevel != null and experienceLevel != ''">
+                AND j.experience_level = #{experienceLevel}
+            </if>
+            <if test="salaryMin != null">
+                AND j.salary_min &gt;= #{salaryMin}
+            </if>
+            <if test="salaryMax != null">
+                AND j.salary_max &lt;= #{salaryMax}
+            </if>
+            <if test="remote != null and remote == true">
+                AND j.employment_type = 'REMOTE'
+            </if>
+            <if test="companyId != null">
+                AND j.company_id = #{companyId}
+            </if>
+            <if test="postedWithinDays != null">
+                AND j.posted_at &gt;= DATE_SUB(NOW(), INTERVAL #{postedWithinDays} DAY)
+            </if>
+        </where>
+        ORDER BY j.posted_at DESC
+    </select>
+
+    <select id="countWithFilters" resultType="int">
+        SELECT COUNT(DISTINCT j.id) FROM job j
+        <if test="skillIds != null and skillIds.size() > 0">
+            INNER JOIN job_skill js ON j.id = js.job_id AND js.skill_id IN
+            <foreach item="sid" collection="skillIds" open="(" separator="," close=")">#{sid}</foreach>
+        </if>
+        <where>
+            j.status = 'OPEN'
+            <if test="keyword != null and keyword != ''">
+                AND (j.title LIKE CONCAT('%', #{keyword}, '%')
+                  OR j.description LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="location != null and location != ''">
+                AND j.location LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="employmentType != null and employmentType != ''">
+                AND j.employment_type = #{employmentType}
+            </if>
+            <if test="experienceLevel != null and experienceLevel != ''">
+                AND j.experience_level = #{experienceLevel}
+            </if>
+            <if test="salaryMin != null">
+                AND j.salary_min &gt;= #{salaryMin}
+            </if>
+            <if test="salaryMax != null">
+                AND j.salary_max &lt;= #{salaryMax}
+            </if>
+            <if test="remote != null and remote == true">
+                AND j.employment_type = 'REMOTE'
+            </if>
+            <if test="companyId != null">
+                AND j.company_id = #{companyId}
+            </if>
+            <if test="postedWithinDays != null">
+                AND j.posted_at &gt;= DATE_SUB(NOW(), INTERVAL #{postedWithinDays} DAY)
+            </if>
+        </where>
+    </select>
+
+    <select id="findSavedByUserId" resultMap="jobResultMap">
+        SELECT j.* FROM job j
+        INNER JOIN saved_job sj ON j.id = sj.job_id
+        WHERE sj.user_id = #{userId}
+        ORDER BY sj.saved_at DESC
+    </select>
+
+    <insert id="saveJob">
+        INSERT IGNORE INTO saved_job (user_id, job_id) VALUES (#{userId}, #{jobId})
+    </insert>
+
+    <delete id="unsaveJob">
+        DELETE FROM saved_job WHERE user_id = #{userId} AND job_id = #{jobId}
+    </delete>
+
+    <select id="isSaved" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM saved_job WHERE user_id = #{userId} AND job_id = #{jobId}
+    </select>
+
+</mapper>

@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: ${APP_NAME}
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT:3306}/${DB_NAME}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: ${MAIL_STARTTLS:true}
+            required: ${MAIL_STARTTLS:true}
+          ssl:
+            enable: ${MAIL_SSL:false}
+          connectiontimeout: 15000
+          timeout: 15000
+          writetimeout: 15000
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-expiry-ms: ${JWT_ACCESS_EXPIRY_MS:900000}
+  refresh-secret: ${JWT_REFRESH_SECRET}
+  refresh-expiry-ms: ${JWT_REFRESH_EXPIRY_MS:604800000}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jobplus.model
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  port: ${SERVER_PORT:9090}
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    com.jobplus.mapper: ${LOG_SQL:INFO}
+
+upload:
+  path: ${UPLOAD_LOCAL_PATH:./uploads}
+  base-url: ${UPLOAD_BASE_URL:http://localhost:8080/uploads}
+
+mail:
+  enabled: ${MAIL_ENABLED:false}
+  from: ${MAIL_FROM:noreply@jobplus.com}
+  app-url: ${FRONTEND_URL:http://localhost:5173}
+
+auth:
+  password-reset:
+    expiry-minutes: ${PASSWORD_RESET_EXPIRY_MINUTES:30}
+
+ai:
+  provider: ${AI_PROVIDER:none}
+  api:
+    key: ${AI_API_KEY:}
+  model: ${AI_MODEL:gpt-3.5-turbo}

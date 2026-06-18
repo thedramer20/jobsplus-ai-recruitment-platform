@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Page background — light/dark dot-grid ── */
+.page-bg {
+  background: linear-gradient(135deg, #f1f5f9 0%, #eff6ff 50%, #eef2ff 100%);
+  background-image:
+    radial-gradient(circle, #c7d2fe 1.2px, transparent 1.2px),
+    linear-gradient(135deg, #f1f5f9 0%, #eff6ff 50%, #eef2ff 100%);
+  background-size: 28px 28px, 100% 100%;
+}
+
+.dark .page-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #111827 50%, #0f172a 100%);
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.04) 1.2px, transparent 1.2px),
+    linear-gradient(135deg, #0f172a 0%, #111827 50%, #0f172a 100%);
+  background-size: 28px 28px, 100% 100%;
+}
+
+/* ── Scrollbar ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.banner-dot-pattern {
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* ── Shimmer animation ── */
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background-size: 200% auto;
+}
+
+/* ── Ring-3 utility ── */
+@layer utilities {
+  .ring-3 {
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+
+  .focus\:ring-3:focus {
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+}
+
+@layer base {
+  :root {
+    --color-primary:       #4338CA;
+    --color-primary-light: #6D6AE8;
+    --color-primary-dark:  #2D25A8;
+    --color-accent:        #10B981;
+    --color-accent-light:  #34D399;
+    --color-accent-dark:   #059669;
+    --color-highlight:     #F59E0B;
+    --color-surface:       #F8FAFC;
+    --color-background:    #F8FAFC;
+    --color-foreground:    #0F172A;
+  }
+
+  .dark {
+    --color-surface:    #0F172A;
+    --color-background: #0F172A;
+    --color-foreground: #F8FAFC;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-foreground);
+  }
+
+  /* ── Elegant thin custom scrollbar ── */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  /* ── Text selection ── */
+  ::selection {
+    background-color: rgba(67, 56, 202, 0.15);
+    color: inherit;
+  }
+  .dark ::selection {
+    background-color: rgba(99, 102, 241, 0.28);
+  }
+
+  /* ── Form inputs ── */
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  select {
+    color: #1e293b;
+  }
+  .dark input:not([type='checkbox']):not([type='radio']),
+  .dark textarea,
+  .dark select {
+    color: #f8fafc;
+  }
+
+  /* ── Focus visible (keyboard nav) ── */
+  :focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.6);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ── Smooth transitions on interactive elements ── */
+  button,
+  a,
+  [role='button'] {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  /* ── Images ── */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── Section dividers ── */
+  .section-divider {
+    border-top: 1px solid rgba(226, 232, 240, 0.6);
+  }
+  .dark .section-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}

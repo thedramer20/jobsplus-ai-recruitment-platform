@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jobplus.mapper.ApplicationMapper">
+
+    <resultMap id="appResultMap" type="com.jobplus.model.Application">
+        <id     property="id"          column="id"/>
+        <result property="jobId"       column="job_id"/>
+        <result property="seekerId"    column="seeker_id"/>
+        <result property="status"      column="status"/>
+        <result property="coverLetter" column="cover_letter"/>
+        <result property="resumeUrl"   column="resume_url"/>
+        <result property="appliedAt"   column="applied_at"/>
+        <result property="updatedAt"   column="updated_at"/>
+    </resultMap>
+
+    <select id="findById" resultMap="appResultMap">
+        SELECT * FROM application WHERE id = #{id}
+    </select>
+
+    <select id="findBySeekerId" resultMap="appResultMap">
+        SELECT * FROM application
+        WHERE seeker_id = #{seekerId}
+        ORDER BY applied_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countBySeekerId" resultType="int">
+        SELECT COUNT(*) FROM application WHERE seeker_id = #{seekerId}
+    </select>
+
+    <select id="findByJobId" resultMap="appResultMap">
+        SELECT * FROM application
+        WHERE job_id = #{jobId}
+        ORDER BY applied_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="findAllByJobId" resultMap="appResultMap">
+        SELECT * FROM application
+        WHERE job_id = #{jobId}
+        ORDER BY applied_at DESC
+    </select>
+
+    <select id="countByJobId" resultType="int">
+        SELECT COUNT(*) FROM application WHERE job_id = #{jobId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO application (job_id, seeker_id, status, cover_letter, resume_url)
+        VALUES (#{jobId}, #{seekerId}, 'APPLIED', #{coverLetter}, #{resumeUrl})
+    </insert>
+
+    <!-- JOIN ensures only the job's owner can change status -->
+    <update id="updateStatus">
+        UPDATE application a
+        INNER JOIN job j ON a.job_id = j.id
+        SET a.status = #{status}
+        WHERE a.id = #{id}
+          AND j.posted_by = #{jobPostedBy}
+    </update>
+
+    <select id="existsByJobAndSeeker" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM application
+        WHERE job_id = #{jobId} AND seeker_id = #{seekerId}
+    </select>
+
+</mapper>

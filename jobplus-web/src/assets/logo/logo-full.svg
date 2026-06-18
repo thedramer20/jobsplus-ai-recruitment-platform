@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 52" fill="none">
+  <!-- "Job" in indigo -->
+  <text
+    x="4" y="41"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="40" font-weight="700" letter-spacing="-1"
+    fill="#4338CA"
+  >Job</text>
+
+  <!-- Geometric plus in emerald — center (96, 21), bars 8×26, rounded caps -->
+  <rect x="92" y="8"  width="8" height="26" rx="4" fill="#10B981"/>
+  <rect x="83" y="17" width="26" height="8" rx="4" fill="#10B981"/>
+
+  <!-- "lus" in dark charcoal -->
+  <text
+    x="115" y="41"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="40" font-weight="700" letter-spacing="-1"
+    fill="#1E293B"
+  >lus</text>
+</svg>

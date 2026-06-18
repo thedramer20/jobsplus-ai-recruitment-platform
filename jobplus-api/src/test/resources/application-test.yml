@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: jobplus-test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL;NON_KEYWORDS=VALUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 5
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-test.sql
+
+CORS_ALLOWED_ORIGINS: http://localhost:5173
+
+jwt:
+  secret: am9icGx1cy10ZXN0LWFjY2Vzcy1zZWNyZXQtc2lnbmluZy1rZXktMTIzNDU=
+  access-expiry-ms: 900000
+  refresh-secret: am9icGx1cy10ZXN0LXJlZnJlc2gtc2VjcmV0LXNpZ25pbmcta2V5LTY3ODkw
+  refresh-expiry-ms: 604800000
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jobplus.model
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: WARN
+    com.jobplus: DEBUG

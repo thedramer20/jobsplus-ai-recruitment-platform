@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "jobs": "Jobs",
+    "companies": "Unternehmen",
+    "network": "Netzwerk",
+    "feed": "Feed",
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "signUp": "Registrieren"
+  },
+  "footer": {
+    "tagline": "Die moderne Plattform für die Verbindung von Talenten und Chancen.",
+    "quickLinks": "Schnelllinks",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "about": "Über uns",
+    "copyright": "© {{year}} JobPlus. Alle Rechte vorbehalten."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Verwalte dein Konto, Datenschutz und Einstellungen.",
+    "sections": {
+      "profile": "Profil",
+      "account": "Konto",
+      "privacy": "Datenschutz",
+      "notifications": "Benachrichtigungen",
+      "appearance": "Erscheinungsbild",
+      "security": "Sicherheit",
+      "dangerZone": "Gefahrenzone"
+    },
+    "appearance": {
+      "title": "Erscheinungsbild",
+      "subtitle": "Passe das Aussehen von JobPlus an.",
+      "theme": "Thema",
+      "language": "Sprache",
+      "compactMode": "Kompaktmodus",
+      "compactModeDesc": "Abstände reduzieren für mehr Inhalt",
+      "light": "Hell",
+      "lightDesc": "Saubere weiße Benutzeroberfläche",
+      "dark": "Dunkel",
+      "darkDesc": "Schonend für die Augen",
+      "system": "System",
+      "systemDesc": "Folgt deinem Betriebssystem"
+    }
+  },
+  "feed": {
+    "createPost": "Was denkst du?",
+    "photo": "Foto",
+    "video": "Video",
+    "article": "Artikel",
+    "like": "Gefällt mir",
+    "comment": "Kommentieren",
+    "share": "Teilen",
+    "copied": "Kopiert!",
+    "noComments": "Noch keine Kommentare. Sei der Erste!",
+    "writeComment": "Kommentar schreiben…",
+    "peopleYouMayKnow": "Personen, die du kennen könntest",
+    "connect": "Verbinden",
+    "trending": "Trends",
+    "topics": "Themen"
+  },
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "search": "Suchen",
+    "apply": "Bewerben",
+    "follow": "Folgen",
+    "unfollow": "Nicht mehr folgen",
+    "send": "Senden",
+    "loading": "Laden…",
+    "error": "Etwas ist schiefgelaufen",
+    "viewAll": "Alle anzeigen",
+    "seeMore": "Mehr sehen",
+    "back": "Zurück"
+  }
+}

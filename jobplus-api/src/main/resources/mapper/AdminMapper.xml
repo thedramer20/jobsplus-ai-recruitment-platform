@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.AdminMapper">
+
+    <!-- ===================== RESULT MAPS ===================== -->
+
+    <resultMap id="userResultMap" type="User">
+        <id     property="id"           column="id"/>
+        <result property="email"        column="email"/>
+        <result property="passwordHash" column="password_hash"/>
+        <result property="role"         column="role"/>
+        <result property="name"         column="name"/>
+        <result property="headline"     column="headline"/>
+        <result property="avatarUrl"    column="avatar_url"/>
+        <result property="location"     column="location"/>
+        <result property="status"       column="status"/>
+        <result property="createdAt"    column="created_at"/>
+        <result property="updatedAt"    column="updated_at"/>
+    </resultMap>
+
+    <resultMap id="companyResultMap" type="Company">
+        <id     property="id"          column="id"/>
+        <result property="name"        column="name"/>
+        <result property="logoUrl"     column="logo_url"/>
+        <result property="industry"    column="industry"/>
+        <result property="size"        column="size"/>
+        <result property="location"    column="location"/>
+        <result property="website"     column="website"/>
+        <result property="description" column="description"/>
+        <result property="verified"    column="verified"/>
+        <result property="createdAt"   column="created_at"/>
+    </resultMap>
+
+    <resultMap id="jobResultMap" type="Job">
+        <id     property="id"              column="id"/>
+        <result property="companyId"       column="company_id"/>
+        <result property="postedBy"        column="posted_by"/>
+        <result property="title"           column="title"/>
+        <result property="description"     column="description"/>
+        <result property="location"        column="location"/>
+        <result property="employmentType"  column="employment_type"/>
+        <result property="experienceLevel" column="experience_level"/>
+        <result property="salaryMin"       column="salary_min"/>
+        <result property="salaryMax"       column="salary_max"/>
+        <result property="status"          column="status"/>
+        <result property="postedAt"        column="posted_at"/>
+        <result property="deadline"        column="deadline"/>
+        <result property="updatedAt"       column="updated_at"/>
+    </resultMap>
+
+    <resultMap id="postResultMap" type="Post">
+        <id     property="id"           column="id"/>
+        <result property="authorId"     column="author_id"/>
+        <result property="content"      column="content"/>
+        <result property="mediaUrl"     column="media_url"/>
+        <result property="likeCount"    column="like_count"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="createdAt"    column="created_at"/>
+        <result property="updatedAt"    column="updated_at"/>
+    </resultMap>
+
+    <resultMap id="auditLogResultMap" type="AuditLog">
+        <id     property="id"         column="id"/>
+        <result property="adminId"    column="admin_id"/>
+        <result property="action"     column="action"/>
+        <result property="targetType" column="target_type"/>
+        <result property="targetId"   column="target_id"/>
+        <result property="detail"     column="detail"/>
+        <result property="createdAt"  column="created_at"/>
+    </resultMap>
+
+    <!-- ===================== STATS ===================== -->
+
+    <select id="countAllUsers" resultType="long">
+        SELECT COUNT(*) FROM `user`
+    </select>
+
+    <select id="countUsersByRole" resultType="long">
+        SELECT COUNT(*) FROM `user` WHERE role = #{role}
+    </select>
+
+    <select id="countAllJobs" resultType="long">
+        SELECT COUNT(*) FROM job
+    </select>
+
+    <select id="countJobsByStatus" resultType="long">
+        SELECT COUNT(*) FROM job WHERE status = #{status}
+    </select>
+
+    <select id="countAllApplications" resultType="long">
+        SELECT COUNT(*) FROM application
+    </select>
+
+    <select id="countAllCompanies" resultType="long">
+        SELECT COUNT(*) FROM company
+    </select>
+
+    <select id="countNewUsers" resultType="long">
+        SELECT COUNT(*) FROM `user`
+        WHERE created_at &gt;= DATE_SUB(NOW(), INTERVAL #{days} DAY)
+    </select>
+
+    <select id="getSignupsLast30Days"
+            resultType="com.jobplus.dto.response.AdminStatsDTO$DailyCount">
+        SELECT DATE(created_at) AS date, COUNT(*) AS count
+        FROM `user`
+        WHERE created_at &gt;= DATE_SUB(NOW(), INTERVAL 30 DAY)
+        GROUP BY DATE(created_at)
+        ORDER BY date ASC
+    </select>
+
+    <select id="getApplicationsByStatus"
+            resultType="com.jobplus.dto.response.AdminStatsDTO$StatusCount">
+        SELECT status, COUNT(*) AS count
+        FROM application
+        GROUP BY status
+    </select>
+
+    <!-- ===================== USERS ===================== -->
+
+    <select id="getUsersPaginated" resultMap="userResultMap">
+        SELECT u.id, u.email, u.password_hash, u.role, u.name, u.headline,
+               u.avatar_url, u.location, u.status, u.created_at, u.updated_at
+        FROM `user` u
+        <where>
+            <if test="role != null">AND u.role = #{role}</if>
+            <if test="status != null">AND u.status = #{status}</if>
+            <if test="search != null and search != ''">
+                AND (u.name LIKE CONCAT('%', #{search}, '%')
+                  OR u.email LIKE CONCAT('%', #{search}, '%'))
+            </if>
+        </where>
+        ORDER BY u.created_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countUsers" resultType="long">
+        SELECT COUNT(*) FROM `user` u
+        <where>
+            <if test="role != null">AND u.role = #{role}</if>
+            <if test="status != null">AND u.status = #{status}</if>
+            <if test="search != null and search != ''">
+                AND (u.name LIKE CONCAT('%', #{search}, '%')
+                  OR u.email LIKE CONCAT('%', #{search}, '%'))
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUserStatus">
+        UPDATE `user` SET status = #{status}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <update id="updateUserRole">
+        UPDATE `user` SET role = #{role}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM `user` WHERE id = #{id}
+    </delete>
+
+    <!-- ===================== COMPANIES ===================== -->
+
+    <select id="getCompaniesPaginated" resultMap="companyResultMap">
+        SELECT id, name, logo_url, industry, size, location, website, description, verified, created_at
+        FROM company
+        <where>
+            <if test="verified != null">AND verified = #{verified}</if>
+            <if test="search != null and search != ''">
+                AND name LIKE CONCAT('%', #{search}, '%')
+            </if>
+        </where>
+        ORDER BY created_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countCompanies" resultType="long">
+        SELECT COUNT(*) FROM company
+        <where>
+            <if test="verified != null">AND verified = #{verified}</if>
+            <if test="search != null and search != ''">
+                AND name LIKE CONCAT('%', #{search}, '%')
+            </if>
+        </where>
+    </select>
+
+    <update id="setCompanyVerified">
+        UPDATE company SET verified = #{verified} WHERE id = #{id}
+    </update>
+
+    <!-- ===================== JOBS ===================== -->
+
+    <select id="getJobsPaginated" resultMap="jobResultMap">
+        SELECT j.id, j.company_id, j.posted_by, j.title, j.description, j.location,
+               j.employment_type, j.experience_level, j.salary_min, j.salary_max,
+               j.status, j.posted_at, j.deadline, j.updated_at
+        FROM job j
+        LEFT JOIN company c ON j.company_id = c.id
+        <where>
+            <if test="status != null">AND j.status = #{status}</if>
+            <if test="search != null and search != ''">
+                AND (j.title LIKE CONCAT('%', #{search}, '%')
+                  OR c.name LIKE CONCAT('%', #{search}, '%'))
+            </if>
+        </where>
+        ORDER BY j.posted_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countJobs" resultType="long">
+        SELECT COUNT(DISTINCT j.id) FROM job j
+        LEFT JOIN company c ON j.company_id = c.id
+        <where>
+            <if test="status != null">AND j.status = #{status}</if>
+            <if test="search != null and search != ''">
+                AND (j.title LIKE CONCAT('%', #{search}, '%')
+                  OR c.name LIKE CONCAT('%', #{search}, '%'))
+            </if>
+        </where>
+    </select>
+
+    <update id="updateJobStatus">
+        UPDATE job SET status = #{status}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <delete id="deleteJob">
+        DELETE FROM job WHERE id = #{id}
+    </delete>
+
+    <!-- ===================== POSTS ===================== -->
+
+    <select id="getPostsPaginated" resultMap="postResultMap">
+        SELECT id, author_id, content, media_url, like_count, comment_count, created_at, updated_at
+        FROM post
+        ORDER BY created_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countPosts" resultType="long">
+        SELECT COUNT(*) FROM post
+    </select>
+
+    <delete id="deletePost">
+        DELETE FROM post WHERE id = #{id}
+    </delete>
+
+    <!-- ===================== AUDIT LOG ===================== -->
+
+    <select id="getAuditLog" resultMap="auditLogResultMap">
+        SELECT a.id, a.admin_id, a.action, a.target_type, a.target_id, a.detail, a.created_at
+        FROM audit_log a
+        ORDER BY a.created_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countAuditLog" resultType="long">
+        SELECT COUNT(*) FROM audit_log
+    </select>
+
+    <insert id="insertAuditLog" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO audit_log (admin_id, action, target_type, target_id, detail)
+        VALUES (#{adminId}, #{action}, #{targetType}, #{targetId}, #{detail})
+    </insert>
+
+</mapper>

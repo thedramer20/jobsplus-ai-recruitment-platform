@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "jobs": "求人",
+    "companies": "企業",
+    "network": "ネットワーク",
+    "feed": "フィード",
+    "profile": "プロフィール",
+    "settings": "設定",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "signUp": "登録"
+  },
+  "footer": {
+    "tagline": "人材と機会をつなぐモダンなプラットフォーム。",
+    "quickLinks": "クイックリンク",
+    "legal": "法務",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "about": "会社概要",
+    "copyright": "© {{year}} JobPlus. All rights reserved."
+  },
+  "settings": {
+    "title": "設定",
+    "subtitle": "アカウント、プライバシー、設定を管理します。",
+    "sections": {
+      "profile": "プロフィール",
+      "account": "アカウント",
+      "privacy": "プライバシー",
+      "notifications": "通知",
+      "appearance": "外観",
+      "security": "セキュリティ",
+      "dangerZone": "危険ゾーン"
+    },
+    "appearance": {
+      "title": "外観",
+      "subtitle": "JobPlus の見た目をカスタマイズします。",
+      "theme": "テーマ",
+      "language": "言語",
+      "compactMode": "コンパクトモード",
+      "compactModeDesc": "間隔を減らしてより多くのコンテンツを表示",
+      "light": "ライト",
+      "lightDesc": "クリーンな白いインターフェース",
+      "dark": "ダーク",
+      "darkDesc": "目に優しい",
+      "system": "システム",
+      "systemDesc": "OSに従う"
+    }
+  },
+  "feed": {
+    "createPost": "今何を考えていますか？",
+    "photo": "写真",
+    "video": "動画",
+    "article": "記事",
+    "like": "いいね",
+    "comment": "コメント",
+    "share": "シェア",
+    "copied": "コピー済み！",
+    "noComments": "コメントはまだありません。最初にコメントしましょう！",
+    "writeComment": "コメントを書く…",
+    "peopleYouMayKnow": "知り合いかも",
+    "connect": "つながる",
+    "trending": "トレンド",
+    "topics": "トピック"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "search": "検索",
+    "apply": "応募",
+    "follow": "フォロー",
+    "unfollow": "フォロー解除",
+    "send": "送信",
+    "loading": "読み込み中…",
+    "error": "エラーが発生しました",
+    "viewAll": "すべて見る",
+    "seeMore": "もっと見る",
+    "back": "戻る"
+  }
+}

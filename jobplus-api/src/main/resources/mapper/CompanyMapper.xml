@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.CompanyMapper">
+
+    <resultMap id="companyResultMap" type="Company">
+        <id     property="id"          column="id"/>
+        <result property="name"        column="name"/>
+        <result property="logoUrl"     column="logo_url"/>
+        <result property="industry"    column="industry"/>
+        <result property="size"        column="size"/>
+        <result property="location"    column="location"/>
+        <result property="website"     column="website"/>
+        <result property="description" column="description"/>
+        <result property="verified"    column="verified"/>
+        <result property="createdAt"   column="created_at"/>
+    </resultMap>
+
+    <select id="findById" resultMap="companyResultMap">
+        SELECT * FROM company WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="companyResultMap">
+        SELECT * FROM company
+        <where>
+            <if test="industry != null and industry != ''">
+                AND industry = #{industry}
+            </if>
+            <if test="size != null and size != ''">
+                AND size = #{size}
+            </if>
+            <if test="location != null and location != ''">
+                AND location LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="verified != null">
+                AND verified = #{verified}
+            </if>
+        </where>
+        ORDER BY name ASC
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO company (name, logo_url, industry, size, location, website, description, verified)
+        VALUES (#{name}, #{logoUrl}, #{industry}, #{size}, #{location}, #{website}, #{description}, FALSE)
+    </insert>
+
+    <update id="updateById">
+        UPDATE company
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="logoUrl != null">logo_url = #{logoUrl},</if>
+            <if test="industry != null">industry = #{industry},</if>
+            <if test="size != null">size = #{size},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="website != null">website = #{website},</if>
+            <if test="description != null">description = #{description},</if>
+            id = id
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateVerified">
+        UPDATE company SET verified = #{verified} WHERE id = #{id}
+    </update>
+
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM company
+        <where>
+            <if test="industry != null and industry != ''">
+                AND industry = #{industry}
+            </if>
+            <if test="size != null and size != ''">
+                AND size = #{size}
+            </if>
+            <if test="location != null and location != ''">
+                AND location LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="verified != null">
+                AND verified = #{verified}
+            </if>
+        </where>
+    </select>
+
+    <select id="countJobsByCompanyId" resultType="int">
+        SELECT COUNT(*) FROM job WHERE company_id = #{companyId} AND status != 'REMOVED'
+    </select>
+
+    <select id="findCompanyIdByUserId" resultType="Long">
+        SELECT company_id FROM company_member WHERE user_id = #{userId} LIMIT 1
+    </select>
+
+    <insert id="addMember">
+        INSERT IGNORE INTO company_member (company_id, user_id, position)
+        VALUES (#{companyId}, #{userId}, 'Owner')
+    </insert>
+
+</mapper>

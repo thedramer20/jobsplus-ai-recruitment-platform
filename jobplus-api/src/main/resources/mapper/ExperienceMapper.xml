@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.ExperienceMapper">
+
+    <resultMap id="experienceResultMap" type="Experience">
+        <id     property="id"          column="id"/>
+        <result property="userId"      column="user_id"/>
+        <result property="title"       column="title"/>
+        <result property="companyName" column="company_name"/>
+        <result property="location"    column="location"/>
+        <result property="startDate"   column="start_date"/>
+        <result property="endDate"     column="end_date"/>
+        <result property="current"     column="current"/>
+        <result property="description" column="description"/>
+        <result property="createdAt"   column="created_at"/>
+    </resultMap>
+
+    <select id="findByUserId" resultMap="experienceResultMap">
+        SELECT * FROM experience WHERE user_id = #{userId} ORDER BY start_date DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO experience (user_id, title, company_name, location, start_date, end_date, current, description)
+        VALUES (#{userId}, #{title}, #{companyName}, #{location}, #{startDate}, #{endDate}, #{current}, #{description})
+    </insert>
+
+    <update id="updateById">
+        UPDATE experience
+        SET title        = #{title},
+            company_name = #{companyName},
+            location     = #{location},
+            start_date   = #{startDate},
+            end_date     = #{endDate},
+            current      = #{current},
+            description  = #{description}
+        WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM experience WHERE id = #{id} AND user_id = #{userId}
+    </delete>
+
+</mapper>

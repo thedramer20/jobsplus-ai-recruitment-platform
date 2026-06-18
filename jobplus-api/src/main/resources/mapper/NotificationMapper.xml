@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.NotificationMapper">
+
+    <resultMap id="notifResultMap" type="com.jobplus.model.Notification">
+        <id     property="id"        column="id"/>
+        <result property="userId"    column="user_id"/>
+        <result property="type"      column="type"/>
+        <result property="payload"   column="payload"/>
+        <result property="readFlag"  column="read_flag"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO notification (user_id, type, payload)
+        VALUES (#{userId}, #{type}, #{payload})
+    </insert>
+
+    <select id="findByUserId" resultMap="notifResultMap">
+        SELECT * FROM notification
+        WHERE user_id = #{userId}
+        <if test="unreadOnly">AND read_flag = FALSE</if>
+        ORDER BY created_at DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countByUserId" resultType="int">
+        SELECT COUNT(*) FROM notification
+        WHERE user_id = #{userId}
+        <if test="unreadOnly">AND read_flag = FALSE</if>
+    </select>
+
+    <select id="countUnread" resultType="int">
+        SELECT COUNT(*) FROM notification WHERE user_id = #{userId} AND read_flag = FALSE
+    </select>
+
+    <update id="markRead">
+        UPDATE notification SET read_flag = TRUE WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <update id="markAllRead">
+        UPDATE notification SET read_flag = TRUE WHERE user_id = #{userId} AND read_flag = FALSE
+    </update>
+
+</mapper>

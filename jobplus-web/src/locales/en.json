@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "companies": "Companies",
+    "network": "Network",
+    "feed": "Feed",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
+  "footer": {
+    "tagline": "The modern platform for connecting talent with opportunity.",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "about": "About",
+    "copyright": "© {{year}} JobPlus. All rights reserved."
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account, privacy, and preferences.",
+    "sections": {
+      "profile": "Profile",
+      "account": "Account",
+      "privacy": "Privacy",
+      "notifications": "Notifications",
+      "appearance": "Appearance",
+      "security": "Security",
+      "dangerZone": "Danger Zone"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "subtitle": "Customize how JobPlus looks and feels.",
+      "theme": "Theme",
+      "language": "Language",
+      "compactMode": "Compact mode",
+      "compactModeDesc": "Reduce spacing to show more content on screen",
+      "light": "Light",
+      "lightDesc": "Clean white interface",
+      "dark": "Dark",
+      "darkDesc": "Easy on the eyes",
+      "system": "System",
+      "systemDesc": "Follows your OS"
+    }
+  },
+  "feed": {
+    "createPost": "What's on your mind?",
+    "photo": "Photo",
+    "video": "Video",
+    "article": "Article",
+    "like": "Like",
+    "comment": "Comment",
+    "share": "Share",
+    "copied": "Copied!",
+    "noComments": "No comments yet. Be the first!",
+    "writeComment": "Write a comment…",
+    "peopleYouMayKnow": "People You May Know",
+    "connect": "Connect",
+    "trending": "Trending",
+    "topics": "Topics"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "apply": "Apply",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "send": "Send",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "viewAll": "View all",
+    "seeMore": "See more",
+    "back": "Back"
+  }
+}

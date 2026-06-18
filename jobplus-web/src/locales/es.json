@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "jobs": "Empleos",
+    "companies": "Empresas",
+    "network": "Red",
+    "feed": "Noticias",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "signUp": "Registrarse"
+  },
+  "footer": {
+    "tagline": "La plataforma moderna para conectar talento con oportunidades.",
+    "quickLinks": "Enlaces rápidos",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "about": "Acerca de",
+    "copyright": "© {{year}} JobPlus. Todos los derechos reservados."
+  },
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Gestiona tu cuenta, privacidad y preferencias.",
+    "sections": {
+      "profile": "Perfil",
+      "account": "Cuenta",
+      "privacy": "Privacidad",
+      "notifications": "Notificaciones",
+      "appearance": "Apariencia",
+      "security": "Seguridad",
+      "dangerZone": "Zona de peligro"
+    },
+    "appearance": {
+      "title": "Apariencia",
+      "subtitle": "Personaliza el aspecto de JobPlus.",
+      "theme": "Tema",
+      "language": "Idioma",
+      "compactMode": "Modo compacto",
+      "compactModeDesc": "Reducir espaciado para mostrar más contenido",
+      "light": "Claro",
+      "lightDesc": "Interfaz blanca limpia",
+      "dark": "Oscuro",
+      "darkDesc": "Suave para los ojos",
+      "system": "Sistema",
+      "systemDesc": "Sigue tu OS"
+    }
+  },
+  "feed": {
+    "createPost": "¿Qué estás pensando?",
+    "photo": "Foto",
+    "video": "Vídeo",
+    "article": "Artículo",
+    "like": "Me gusta",
+    "comment": "Comentar",
+    "share": "Compartir",
+    "copied": "¡Copiado!",
+    "noComments": "Sin comentarios aún. ¡Sé el primero!",
+    "writeComment": "Escribe un comentario…",
+    "peopleYouMayKnow": "Personas que quizás conozcas",
+    "connect": "Conectar",
+    "trending": "Tendencias",
+    "topics": "Temas"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar",
+    "apply": "Solicitar",
+    "follow": "Seguir",
+    "unfollow": "Dejar de seguir",
+    "send": "Enviar",
+    "loading": "Cargando…",
+    "error": "Algo salió mal",
+    "viewAll": "Ver todo",
+    "seeMore": "Ver más",
+    "back": "Volver"
+  }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.SeekerProfileMapper">
+
+    <resultMap id="seekerProfileResultMap" type="SeekerProfile">
+        <id     property="userId"           column="user_id"/>
+        <result property="bio"              column="bio"/>
+        <result property="yearsExperience"  column="years_experience"/>
+        <result property="educationSummary" column="education_summary"/>
+        <result property="resumeUrl"        column="resume_url"/>
+        <result property="openToWork"       column="open_to_work"/>
+        <result property="bannerGradient"   column="banner_gradient"/>
+        <result property="updatedAt"        column="updated_at"/>
+    </resultMap>
+
+    <select id="findByUserId" resultMap="seekerProfileResultMap">
+        SELECT * FROM seeker_profile WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO seeker_profile (user_id, bio, years_experience, education_summary, resume_url, open_to_work)
+        VALUES (#{userId}, #{bio}, #{yearsExperience}, #{educationSummary}, #{resumeUrl}, #{openToWork})
+    </insert>
+
+    <update id="updateBannerGradient">
+        UPDATE seeker_profile
+        SET banner_gradient = #{bannerGradient}, updated_at = CURRENT_TIMESTAMP
+        WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateByUserId">
+        UPDATE seeker_profile
+        <set>
+            <if test="bio != null">bio = #{bio},</if>
+            <if test="yearsExperience != null">years_experience = #{yearsExperience},</if>
+            <if test="educationSummary != null">education_summary = #{educationSummary},</if>
+            <if test="resumeUrl != null">resume_url = #{resumeUrl},</if>
+            <if test="openToWork != null">open_to_work = #{openToWork},</if>
+            updated_at = CURRENT_TIMESTAMP
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+</mapper>

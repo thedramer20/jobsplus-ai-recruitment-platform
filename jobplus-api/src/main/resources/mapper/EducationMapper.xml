@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobplus.mapper.EducationMapper">
+
+    <resultMap id="educationResultMap" type="Education">
+        <id     property="id"           column="id"/>
+        <result property="userId"       column="user_id"/>
+        <result property="school"       column="school"/>
+        <result property="degree"       column="degree"/>
+        <result property="fieldOfStudy" column="field_of_study"/>
+        <result property="startYear"    column="start_year"/>
+        <result property="endYear"      column="end_year"/>
+        <result property="createdAt"    column="created_at"/>
+    </resultMap>
+
+    <select id="findByUserId" resultMap="educationResultMap">
+        SELECT * FROM education WHERE user_id = #{userId} ORDER BY start_year DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO education (user_id, school, degree, field_of_study, start_year, end_year)
+        VALUES (#{userId}, #{school}, #{degree}, #{fieldOfStudy}, #{startYear}, #{endYear})
+    </insert>
+
+    <update id="updateById">
+        UPDATE education
+        SET school        = #{school},
+            degree        = #{degree},
+            field_of_study = #{fieldOfStudy},
+            start_year    = #{startYear},
+            end_year      = #{endYear}
+        WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM education WHERE id = #{id} AND user_id = #{userId}
+    </delete>
+
+</mapper>

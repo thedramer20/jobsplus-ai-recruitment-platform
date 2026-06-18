@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "jobs": "Emplois",
+    "companies": "Entreprises",
+    "network": "Réseau",
+    "feed": "Fil",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "signUp": "S'inscrire"
+  },
+  "footer": {
+    "tagline": "La plateforme moderne pour connecter les talents aux opportunités.",
+    "quickLinks": "Liens rapides",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "about": "À propos",
+    "copyright": "© {{year}} JobPlus. Tous droits réservés."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Gérez votre compte, votre vie privée et vos préférences.",
+    "sections": {
+      "profile": "Profil",
+      "account": "Compte",
+      "privacy": "Confidentialité",
+      "notifications": "Notifications",
+      "appearance": "Apparence",
+      "security": "Sécurité",
+      "dangerZone": "Zone de danger"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "subtitle": "Personnalisez l'apparence de JobPlus.",
+      "theme": "Thème",
+      "language": "Langue",
+      "compactMode": "Mode compact",
+      "compactModeDesc": "Réduire l'espacement pour afficher plus de contenu",
+      "light": "Clair",
+      "lightDesc": "Interface blanche épurée",
+      "dark": "Sombre",
+      "darkDesc": "Doux pour les yeux",
+      "system": "Système",
+      "systemDesc": "Suit votre OS"
+    }
+  },
+  "feed": {
+    "createPost": "Quoi de neuf ?",
+    "photo": "Photo",
+    "video": "Vidéo",
+    "article": "Article",
+    "like": "J'aime",
+    "comment": "Commenter",
+    "share": "Partager",
+    "copied": "Copié !",
+    "noComments": "Pas encore de commentaires. Soyez le premier !",
+    "writeComment": "Écrire un commentaire…",
+    "peopleYouMayKnow": "Personnes que vous connaissez peut-être",
+    "connect": "Connecter",
+    "trending": "Tendances",
+    "topics": "Sujets"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "apply": "Postuler",
+    "follow": "Suivre",
+    "unfollow": "Ne plus suivre",
+    "send": "Envoyer",
+    "loading": "Chargement…",
+    "error": "Une erreur s'est produite",
+    "viewAll": "Tout voir",
+    "seeMore": "Voir plus",
+    "back": "Retour"
+  }
+}

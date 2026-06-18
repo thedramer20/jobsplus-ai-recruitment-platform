@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "jobs": "وظائف",
+    "companies": "شركات",
+    "network": "شبكة",
+    "feed": "المنشورات",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "signUp": "إنشاء حساب"
+  },
+  "footer": {
+    "tagline": "المنصة الحديثة للتواصل بين المواهب والفرص.",
+    "quickLinks": "روابط سريعة",
+    "legal": "قانوني",
+    "privacy": "الخصوصية",
+    "terms": "الشروط",
+    "about": "عن المنصة",
+    "copyright": "© {{year}} JobPlus. جميع الحقوق محفوظة."
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "إدارة حسابك وخصوصيتك وتفضيلاتك.",
+    "sections": {
+      "profile": "الملف الشخصي",
+      "account": "الحساب",
+      "privacy": "الخصوصية",
+      "notifications": "الإشعارات",
+      "appearance": "المظهر",
+      "security": "الأمان",
+      "dangerZone": "منطقة الخطر"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "subtitle": "تخصيص مظهر JobPlus وطريقة عمله.",
+      "theme": "المظهر",
+      "language": "اللغة",
+      "compactMode": "الوضع المدمج",
+      "compactModeDesc": "تقليل المسافات لعرض محتوى أكثر على الشاشة",
+      "light": "فاتح",
+      "lightDesc": "واجهة بيضاء نظيفة",
+      "dark": "داكن",
+      "darkDesc": "مريح للعيون",
+      "system": "نظام",
+      "systemDesc": "يتبع نظام التشغيل"
+    }
+  },
+  "feed": {
+    "createPost": "ما الذي يدور في ذهنك؟",
+    "photo": "صورة",
+    "video": "فيديو",
+    "article": "مقالة",
+    "like": "إعجاب",
+    "comment": "تعليق",
+    "share": "مشاركة",
+    "copied": "تم النسخ!",
+    "noComments": "لا تعليقات بعد. كن أول من يعلق!",
+    "writeComment": "اكتب تعليقاً…",
+    "peopleYouMayKnow": "أشخاص قد تعرفهم",
+    "connect": "تواصل",
+    "trending": "الرائج",
+    "topics": "المواضيع"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "search": "بحث",
+    "apply": "تقديم",
+    "follow": "متابعة",
+    "unfollow": "إلغاء المتابعة",
+    "send": "إرسال",
+    "loading": "جار التحميل…",
+    "error": "حدث خطأ",
+    "viewAll": "عرض الكل",
+    "seeMore": "المزيد",
+    "back": "رجوع"
+  }
+}

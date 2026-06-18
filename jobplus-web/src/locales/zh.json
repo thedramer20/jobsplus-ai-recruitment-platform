@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "首页",
+    "jobs": "职位",
+    "companies": "公司",
+    "network": "人脉",
+    "feed": "动态",
+    "profile": "个人资料",
+    "settings": "设置",
+    "logout": "退出登录",
+    "login": "登录",
+    "signUp": "注册"
+  },
+  "footer": {
+    "tagline": "连接人才与机遇的现代平台。",
+    "quickLinks": "快速链接",
+    "legal": "法律",
+    "privacy": "隐私",
+    "terms": "条款",
+    "about": "关于",
+    "copyright": "© {{year}} JobPlus. 保留所有权利。"
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "管理您的账户、隐私和偏好设置。",
+    "sections": {
+      "profile": "个人资料",
+      "account": "账户",
+      "privacy": "隐私",
+      "notifications": "通知",
+      "appearance": "外观",
+      "security": "安全",
+      "dangerZone": "危险区域"
+    },
+    "appearance": {
+      "title": "外观",
+      "subtitle": "自定义 JobPlus 的外观和感觉。",
+      "theme": "主题",
+      "language": "语言",
+      "compactMode": "紧凑模式",
+      "compactModeDesc": "减少间距以在屏幕上显示更多内容",
+      "light": "浅色",
+      "lightDesc": "简洁白色界面",
+      "dark": "深色",
+      "darkDesc": "护眼模式",
+      "system": "跟随系统",
+      "systemDesc": "跟随您的操作系统"
+    }
+  },
+  "feed": {
+    "createPost": "分享你的想法…",
+    "photo": "照片",
+    "video": "视频",
+    "article": "文章",
+    "like": "点赞",
+    "comment": "评论",
+    "share": "分享",
+    "copied": "已复制！",
+    "noComments": "暂无评论，快来第一个发表！",
+    "writeComment": "写评论…",
+    "peopleYouMayKnow": "您可能认识的人",
+    "connect": "连接",
+    "trending": "热门",
+    "topics": "话题"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "apply": "申请",
+    "follow": "关注",
+    "unfollow": "取消关注",
+    "send": "发送",
+    "loading": "加载中…",
+    "error": "出错了",
+    "viewAll": "查看全部",
+    "seeMore": "查看更多",
+    "back": "返回"
+  }
+}

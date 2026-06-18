@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- Rounded square background -->
+  <rect width="40" height="40" rx="10" fill="#4338CA"/>
+
+  <!-- Emerald plus — center (20, 20), bars 5×22, rounded caps -->
+  <rect x="17.5" y="9"    width="5" height="22" rx="2.5" fill="#10B981"/>
+  <rect x="9"    y="17.5" width="22" height="5" rx="2.5" fill="#10B981"/>
+</svg>
