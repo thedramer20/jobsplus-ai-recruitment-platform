@@ -22,6 +22,14 @@ JobPlus is a full-stack AI-assisted recruitment platform designed for job seeker
   <strong>Admin control.</strong>
 </p>
 
+## Platform At A Glance
+
+| Focus | Summary |
+|---|---|
+| Product Scope | Full-stack recruitment platform covering candidate journeys, employer hiring workflows, and admin moderation |
+| Core Value | Combines job discovery, networking, direct messaging, AI assistance, and role-based dashboards in one experience |
+| Built For | Job seekers, recruiters, company teams, and platform administrators |
+
 ## Quick Navigation
 
 | Section | Link |
@@ -61,19 +69,21 @@ In short, JobPlus is not only a job board. It is a combined recruitment, network
 
 ## Screenshots
 
+The gallery below highlights the most important product surfaces with compact previews and short context for each page.
+
 ### Landing & Authentication
 
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="docs/screenshots/landing-page.png" alt="Landing Page" />
+      <img src="docs/screenshots/landing-page.png" alt="Landing Page" width="96%" />
       <br />
       <strong>Home - Welcome Screen</strong>
       <br />
       <sub>Hero introduction, featured sections, and onboarding entry points.</sub>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="docs/screenshots/login-page.png" alt="Login Page" />
+      <img src="docs/screenshots/login-page.png" alt="Login Page" width="96%" />
       <br />
       <strong>Login</strong>
       <br />
@@ -82,14 +92,14 @@ In short, JobPlus is not only a job board. It is a combined recruitment, network
   </tr>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="docs/screenshots/signup-page.png" alt="Sign Up Page" />
+      <img src="docs/screenshots/signup-page.png" alt="Sign Up Page" width="96%" />
       <br />
       <strong>Register</strong>
       <br />
       <sub>Multi-step registration flow for both job seekers and employers.</sub>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="docs/screenshots/forgot-password-page.png" alt="Forgot Password Page" />
+      <img src="docs/screenshots/forgot-password-page.png" alt="Forgot Password Page" width="96%" />
       <br />
       <strong>Password Recovery</strong>
       <br />
@@ -100,41 +110,87 @@ In short, JobPlus is not only a job board. It is a combined recruitment, network
 
 ### Job Seeker Experience
 
-<p align="center">
-  <img src="docs/screenshots/jobseeker-home-page.png" alt="Job Seeker Home" width="92%" />
-  <br />
-  <strong>Personalized Candidate Dashboard</strong>
-  <br />
-  <sub>Role-aware home experience with recommendations, social activity, and career-focused navigation.</sub>
-</p>
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/jobseeker-home-page.png" alt="Job Seeker Home" width="96%" />
+      <br />
+      <strong>Personalized Dashboard</strong>
+      <br />
+      <sub>Role-aware home experience with recommendations, activity, and quick access to core candidate actions.</sub>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/job-detail-page.png" alt="Job Detail" width="96%" />
+      <br />
+      <strong>Job Detail View</strong>
+      <br />
+      <sub>Expanded role information, company context, and application decision support in one focused page.</sub>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="docs/screenshots/job-detail-page.png" alt="Job Detail" width="92%" />
-  <br />
-  <strong>Job Detail & Application Context</strong>
-  <br />
-  <sub>Expanded job information, company context, application actions, and deeper decision support for candidates.</sub>
-</p>
+### Discovery & Marketplace
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/jobs-page.png" alt="Jobs Page" width="96%" />
+      <br />
+      <strong>Jobs Marketplace</strong>
+      <br />
+      <sub>Searchable job discovery surface where candidates can browse opportunities across companies and roles.</sub>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/companies-page.png" alt="Companies Page" width="96%" />
+      <br />
+      <strong>Companies Directory</strong>
+      <br />
+      <sub>Employer discovery page for exploring verified organizations, industries, and hiring brands.</sub>
+    </td>
+  </tr>
+</table>
+
+### AI Experience
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/ai-interview-coach-page.png" alt="AI Interview Coach" width="96%" />
+      <br />
+      <strong>AI Interview Coach</strong>
+      <br />
+      <sub>Practice-oriented coaching workspace designed to help candidates improve interview readiness.</sub>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/smartmatch-page.png" alt="SmartMatch Page" width="96%" />
+      <br />
+      <strong>SmartMatch Overview</strong>
+      <br />
+      <sub>Visual explanation page for the matching concept, ranking logic, and AI-assisted recommendation flow.</sub>
+    </td>
+  </tr>
+</table>
 
 ### Hiring Workspace
 
-<p align="center">
-  <img src="docs/screenshots/employer-dashboard-page.png" alt="Employer Dashboard" width="92%" />
-  <br />
-  <strong>Employer Dashboard</strong>
-  <br />
-  <sub>Recruiter workspace for monitoring open roles, candidate activity, and hiring performance at a glance.</sub>
-</p>
-
-### Admin Oversight
-
-<p align="center">
-  <img src="docs/screenshots/admin-dashboard-page.png" alt="Admin Dashboard" width="92%" />
-  <br />
-  <strong>Admin Control Center</strong>
-  <br />
-  <sub>Operations view for platform-level visibility across users, companies, moderation, and system activity.</sub>
-</p>
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/employer-dashboard-page.png" alt="Employer Dashboard" width="96%" />
+      <br />
+      <strong>Employer Dashboard</strong>
+      <br />
+      <sub>Recruiter workspace for monitoring open roles, candidate activity, and hiring performance at a glance.</sub>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/admin-dashboard-page.png" alt="Admin Dashboard" width="96%" />
+      <br />
+      <strong>Admin Control Center</strong>
+      <br />
+      <sub>Operations view for platform-level visibility across users, companies, moderation, and system activity.</sub>
+    </td>
+  </tr>
+</table>
 
 ## Tech Stack
 
