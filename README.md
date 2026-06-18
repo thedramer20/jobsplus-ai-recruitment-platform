@@ -11,6 +11,33 @@ JobPlus is a full-stack AI-assisted recruitment platform designed for job seeker
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="MIT License" />
 </p>
 
+<p align="center">
+  <img src="docs/screenshots/landing-page.png" alt="JobPlus Preview" width="88%" />
+</p>
+
+<p align="center">
+  <strong>Recruitment platform.</strong>
+  <strong>Career tools.</strong>
+  <strong>Employer workflows.</strong>
+  <strong>Admin control.</strong>
+</p>
+
+## Quick Navigation
+
+| Section | Link |
+|---|---|
+| What Is JobPlus? | [Jump](#what-is-jobplus) |
+| Feature Highlights | [Jump](#feature-highlights) |
+| Screenshots | [Jump](#screenshots) |
+| Tech Stack | [Jump](#tech-stack) |
+| Getting Started | [Jump](#getting-started) |
+| Demo Credentials | [Jump](#demo-credentials) |
+| API Reference | [Jump](#api-reference) |
+| Project Structure | [Jump](#project-structure) |
+| Database | [Jump](#database) |
+| localStorage Keys | [Jump](#localstorage-keys) |
+| License | [Jump](#license) |
+
 ## What Is JobPlus?
 
 JobPlus is an end-to-end recruitment product built to support the full hiring journey:
@@ -41,25 +68,32 @@ In short, JobPlus is not only a job board. It is a combined recruitment, network
     <td align="center" valign="top" width="50%">
       <img src="docs/screenshots/landing-page.png" alt="Landing Page" />
       <br />
-      <strong>Landing Page</strong>
+      <strong>Home - Welcome Screen</strong>
       <br />
-      Hero introduction, featured sections, and onboarding entry points.
+      <sub>Hero introduction, featured sections, and onboarding entry points.</sub>
     </td>
     <td align="center" valign="top" width="50%">
       <img src="docs/screenshots/login-page.png" alt="Login Page" />
       <br />
       <strong>Login</strong>
       <br />
-      Authentication screen for returning users and role-based access.
+      <sub>Authentication screen for returning users and role-based access.</sub>
     </td>
   </tr>
   <tr>
-    <td align="center" valign="top" colspan="2">
+    <td align="center" valign="top" width="50%">
       <img src="docs/screenshots/signup-page.png" alt="Sign Up Page" />
       <br />
       <strong>Register</strong>
       <br />
-      Multi-step registration flow for both job seekers and employers.
+      <sub>Multi-step registration flow for both job seekers and employers.</sub>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="docs/screenshots/forgot-password-page.png" alt="Forgot Password Page" />
+      <br />
+      <strong>Password Recovery</strong>
+      <br />
+      <sub>Account recovery flow for returning users who need credential reset.</sub>
     </td>
   </tr>
 </table>
@@ -241,6 +275,11 @@ The frontend is configured to proxy `/api` requests to the backend.
 
 ## API Reference
 
+<details>
+<summary><strong>Open API route summary</strong></summary>
+
+<br />
+
 ### Main Route Groups
 
 | Route Group | Purpose | Access |
@@ -269,26 +308,28 @@ The frontend is configured to proxy `/api` requests to the backend.
 }
 ```
 
+</details>
+
 ## Project Structure
 
 ```text
 jobplus/
-├── backup.sql
-├── LICENSE
-├── README.md
-├── start-backend.bat
-├── start-frontend.bat
-├── docs/
-│   └── screenshots/
-├── jobplus-api/
-│   ├── src/main/java/com/jobplus/
-│   ├── src/main/resources/
-│   ├── src/test/
-│   └── pom.xml
-└── jobplus-web/
-    ├── src/
-    ├── package.json
-    └── vite.config.ts
+|-- backup.sql
+|-- LICENSE
+|-- README.md
+|-- start-backend.bat
+|-- start-frontend.bat
+|-- docs/
+|   `-- screenshots/
+|-- jobplus-api/
+|   |-- src/main/java/com/jobplus/
+|   |-- src/main/resources/
+|   |-- src/test/
+|   `-- pom.xml
+`-- jobplus-web/
+    |-- src/
+    |-- package.json
+    `-- vite.config.ts
 ```
 
 ### Backend Package Overview
@@ -307,6 +348,11 @@ jobplus/
 
 ## Database
 
+<details>
+<summary><strong>Open database overview</strong></summary>
+
+<br />
+
 ### Main Domain Areas
 
 | Domain | Tables |
@@ -323,7 +369,14 @@ jobplus/
 - Seed data is provided in `seed.sql`.
 - A full backup is included as `backup.sql`.
 
+</details>
+
 ## localStorage Keys
+
+<details>
+<summary><strong>Open frontend persistence keys</strong></summary>
+
+<br />
 
 | Key | Purpose |
 |---|---|
@@ -331,6 +384,8 @@ jobplus/
 | `jobplus_token` | Access token used by the API client |
 | `jobplus_refresh_token` | Refresh token for session renewal |
 | `jobplus_theme` | Saved theme preference |
+
+</details>
 
 ## Submission Notes
 
