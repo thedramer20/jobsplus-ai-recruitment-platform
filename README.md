@@ -98,6 +98,44 @@ In short, JobPlus is not only a job board. It is a combined recruitment, network
   </tr>
 </table>
 
+### Job Seeker Experience
+
+<p align="center">
+  <img src="docs/screenshots/jobseeker-home-page.png" alt="Job Seeker Home" width="92%" />
+  <br />
+  <strong>Personalized Candidate Dashboard</strong>
+  <br />
+  <sub>Role-aware home experience with recommendations, social activity, and career-focused navigation.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/job-detail-page.png" alt="Job Detail" width="92%" />
+  <br />
+  <strong>Job Detail & Application Context</strong>
+  <br />
+  <sub>Expanded job information, company context, application actions, and deeper decision support for candidates.</sub>
+</p>
+
+### Hiring Workspace
+
+<p align="center">
+  <img src="docs/screenshots/employer-dashboard-page.png" alt="Employer Dashboard" width="92%" />
+  <br />
+  <strong>Employer Dashboard</strong>
+  <br />
+  <sub>Recruiter workspace for monitoring open roles, candidate activity, and hiring performance at a glance.</sub>
+</p>
+
+### Admin Oversight
+
+<p align="center">
+  <img src="docs/screenshots/admin-dashboard-page.png" alt="Admin Dashboard" width="92%" />
+  <br />
+  <strong>Admin Control Center</strong>
+  <br />
+  <sub>Operations view for platform-level visibility across users, companies, moderation, and system activity.</sub>
+</p>
+
 ## Tech Stack
 
 ### Frontend
